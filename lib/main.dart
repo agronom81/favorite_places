@@ -1,4 +1,7 @@
+import 'package:favorite_places/data/places.dart';
+import 'package:favorite_places/screens/places_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,20 +29,29 @@ final theme = ThemeData().copyWith(
 );
 
 void main() {
-  runApp(
-      const MyApp(),
-  );
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
   Widget build(BuildContext context) {
+    final places = ref.watch(placeProvider);
+
     return MaterialApp(
       title: 'Great Places',
       theme: theme,
-      home: ...,
+      home: PlacesListScreen(
+        places: places,
+      ),
     );
   }
 }
