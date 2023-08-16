@@ -1,9 +1,8 @@
-import 'package:favorite_places/data/places.dart';
-import 'package:favorite_places/screens/places_list.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:google_fonts/google_fonts.dart';
+import 'package:favorite_places/screens/places.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
@@ -34,24 +33,15 @@ void main() {
   ));
 }
 
-class MyApp extends ConsumerStatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  @override
-  ConsumerState<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
-    final places = ref.watch(placeProvider);
-
     return MaterialApp(
       title: 'Great Places',
       theme: theme,
-      home: PlacesListScreen(
-        places: places,
-      ),
+      home: const PlacesScreen(),
     );
   }
 }
