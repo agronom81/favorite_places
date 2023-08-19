@@ -4,8 +4,6 @@ import 'package:uuid/uuid.dart';
 
 const uuid = Uuid();
 
-const GOOGLE_MAPS_API = '';
-
 class PlaceLocation {
   PlaceLocation({
     required this.latitude,
